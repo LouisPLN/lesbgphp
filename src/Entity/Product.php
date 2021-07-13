@@ -23,7 +23,7 @@ class Product
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=1000)
+     * @ORM\Column(type="string", length=255)
      */
     private $description;
 
@@ -41,6 +41,11 @@ class Product
      * @ORM\Column(type="integer")
      */
     private $stock;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $urlImg;
 
     public function getId(): ?int
     {
@@ -103,6 +108,18 @@ class Product
     public function setStock(int $stock): self
     {
         $this->stock = $stock;
+
+        return $this;
+    }
+
+    public function getUrlImg(): ?string
+    {
+        return $this->urlImg;
+    }
+
+    public function setUrlImg(string $urlImg): self
+    {
+        $this->urlImg = $urlImg;
 
         return $this;
     }
