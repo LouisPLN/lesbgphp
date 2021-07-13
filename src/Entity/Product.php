@@ -24,6 +24,7 @@ class Product
 
     /**
      * @ORM\Column(type="string", length=255)
+     * 
      */
     private $description;
 
@@ -34,6 +35,9 @@ class Product
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Type(
+     *     type="integer",
+     *     message="The value {{ value }} is not a valid {{ type }}.")
      */
     private $type;
 
