@@ -3,13 +3,210 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-{% if not app.user %}
-                    <li>
-                            <a href="{{ path('app_login') }}">Connexion</a>
-                        </li>
-{% else %}
-                    <li>
-                            <a href="{{ path('app_logout') }}">Deconnexion</a>
-                        </li>
-{% endif %}
+
+ <div class="container">
+        <header>
+            <nav>
+                <ul class="ulOne">
+                    <img src="../../img/logoPOO.png" class="logo" alt="logo">
+                    <h2 class="brandName">Adoptoutou</h2>
+                </ul>
+                <ul class="ulTwo">
+                    <li><a href="{{ path('security_registration') }}" class="signIn">INSCRIPTION</a></li>
+                    <li><a href="{{ path('app_login') }}" class="logIn">CONNEXION</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section id="leftBlock">
+                <h1>
+                    Adoptoutou
+                </h1>
+                <p>
+                    Bienvenue sur Adoptoutou, le premier site web d'adoption nationale qui respecte les animaux.
+                </p>
+                <div class="homeButton">
+                    <a href="{{ path('security_registration') }}" class="signIn">INSCRIPTION</a>
+                    <a href="{{ path('app_login') }}" class="logIn">CONNEXION</a>
+                </div>
+            </section>
+
+            <section id="rightBlock">
+                <img class="homeImg" src="../../img/homeBg.svg" alt="illustration">
+            </section>
+        </main>
+
+        <footer>
+            <h5>&copy; Adoptoutou 2020</h5>
+        </footer>
+    </div>
+
+    <style>
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: #f1f1f1;
+    font-family: 'Rubik', sans-serif;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+nav {
+    height: 100px;
+    margin: auto;
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+    align-items: center;
+    color: #303030;
+}
+
+/* BUTTONS */
+
+.homeButton {
+    width: 100%;
+    margin-top: 50px ;
+    display: flex;
+    justify-content: space-center;
+    align-items: center;
+}
+
+.signIn {
+    padding: 15px 80px;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 4px;
+    color: #fff;
+    background-color: transparent;
+    background-image: -webkit-gradient(linear, left top, right top, from(#4548b0), to(#5b43c2));
+    background-image: linear-gradient(90deg, #4548b0, #5b43c2);
+    transition: border-color .4s,transform .4s,box-shadow .4s,-webkit-transform .4s;
+}
+
+.signIn:hover {
+    box-shadow: 0 6px 12px -2px rgb(145 101 247 / 60%);
+    -webkit-transform: translate(0,-3px);
+    -ms-transform: translate(0,-3px);
+    transform: translate(0,-3px);
+}
+
+
+.logIn {
+    padding: 15px 60px;
+    margin-left: 15px;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 4px;
+    box-sizing: inherit;
+    border: 2px solid #303030;
+    color: #303030;
+    background-color: transparent;
+    transition: border-color .4s,transform .4s,box-shadow .4s,-webkit-transform .4s;
+}
+
+
+.logIn:hover {
+    border: 2px solid #4548b0;
+    background-color: transparent;
+    background-image: none;
+    -webkit-transform: translate(0,-3px);
+    -ms-transform: translate(0,-3px);
+    transform: translate(0,-3px);
+    color: #4548b0;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+
+/* END BUTTONS */
+
+.ulOne {
+    width: 280px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ulOne .logo {
+    width: 80px;
+}
+
+.ulOne h2 {
+    font-size: 30px;
+    font-weight: bold;
+    color: #303030;
+}
+
+
+.ulTwo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main {
+    z-index: 5;
+    margin: auto;
+    padding: 100px 0 100px 0;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#leftBlock,
+#rightBlock {
+    width: 50%;
+}
+
+#leftBlock {
+    color: #fff;
+}
+
+#leftBlock h1 {
+    font-size: 80px;
+    color: #303030;
+}
+
+#leftBlock p {
+    font-size: 20px;
+    width: 80%;
+    color: #303030;
+}
+
+#rightBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.homeImg {
+    width: 100%;
+    margin-top: 50px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    color: #303030;
+}
+
+    </style>
+
 {% endblock %}
