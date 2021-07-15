@@ -22,19 +22,16 @@ class DonationRepository extends ServiceEntityRepository
     // /**
     //  * @return Donation[] Returns an array of Donation objects
     //  */
-    /*
-    public function findByExampleField($value)
+    
+    public function findAllDesc()
     {
         return $this->createQueryBuilder('d')
-            ->andWhere('d.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('d.id', 'ASC')
-            ->setMaxResults(10)
+            ->orderBy('d.date', 'DESC')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?Donation

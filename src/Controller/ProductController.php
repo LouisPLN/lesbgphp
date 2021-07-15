@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/app/product", name="product")
+     * @Route("/product", name="product")
      */
     public function index(): Response
     {
@@ -27,7 +27,7 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/admin/product/new", name="product_create")
+     * @Route("/product/new", name="product_create")
      */
     public function create(Request $request, EntityManagerInterface $manager)
     {

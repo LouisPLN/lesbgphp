@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BlogController!{% endblock %}
+{% block title %}Adoptoutou - Produits{% endblock %}
 
 {% block body %}
 
 
 {% for product in products %}
 
-<h5> {{ product.name }} </h5>
+<h5> Nom : {{ product.name }} </h5>
 
-<p> {{ product.description }} </p>
-<p> {{ product.price }} </p>
-<p> {{ product.type }} </p>
-<p> {{ product.stock }} </p>
+<p> Description : {{ product.description }} </p>
+<p> Prix : {{ product.price }}€ </p>
+<p> Type de produit : {{ product.type }} </p>
+<p> Stock : {{ product.stock }} </p>
 <p><img class="pet-img" src="{{ product.urlImg }}" alt="Image Pet" style="width:250px ; height:150px;"></p>
 
 <hr>
