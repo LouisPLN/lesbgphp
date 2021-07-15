@@ -8,7 +8,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass=App/Repository/UserRepository)
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
 class User implements UserInterface
 {
@@ -147,8 +147,8 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getUserIdentifier()
+    public function getUserIdentifier(): ?string
     {
-        
+        return $this->mail;
     }
 }
