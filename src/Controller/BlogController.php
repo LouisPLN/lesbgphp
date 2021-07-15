@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 class BlogController extends AbstractController
 {
     /**
-     * @Route("/blog", name="blog")
+     * @Route("/app/blog", name="blog")
      */
     public function index(): Response
     {
@@ -29,7 +29,7 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("/blog/new", name="blog_create")
+     * @Route("/admin/blog/new", name="blog_create")
      */
     public function create(Request $request, EntityManagerInterface $manager)
     {
