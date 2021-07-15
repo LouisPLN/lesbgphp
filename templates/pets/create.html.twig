@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Adoptoutou - Ajout d'un animal{% endblock %}
+
+{% block body %}
+
+<h1>Création d'un animal</h1>
+
+<form action="" method="post">
+    <label>Nom</label>
+    <input type="text" name="name" placeholder="nom de l'animal">
+    <br>
+    <label>Type</label> 
+    <input type="text" name="type" placeholder="Type d'animal"> 
+    <br>
+    <label>Race</label> 
+    <input type="text" name="race" placeholder="Race de l'animal">
+    <br>
+    <label>Age</label> 
+    <input type="number" name="age" placeholder="Age de l'animal">
+    <br>
+    <label>Poids</label> 
+    <input type="number" name="weight" placeholder="Poids de l'animal">
+    <br>
+    <label>Couleur</label> 
+    <input type="text" name="color" placeholder="Couleur de l'animal">
+    <br>
+    <label>Adopté</label> 
+    <input type="text" name="state" placeholder="Animal adpoté ?">
+    <br>
+    <label>Lien img</label> 
+    <input type="text" name="img" placeholder="Image de l'animal">
+    <br>
+    <br>  <br>
+    <input type="submit" value="Enregistrer"> 
+</form>
+
+{% endblock %}

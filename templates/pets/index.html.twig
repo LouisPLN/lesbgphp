@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Adoptoutou - Animaux{% endblock %}
+
+{% block body %}
+
+
+{% for pet in pets %}
+
+<h2> Nom : {{ pet.name }} </h2>
+
+<p> Type : {{ pet.type }} </p>
+<p> Race : {{ pet.race }} </p>
+<p> Couleur : {{ pet.color }} </p>
+<p> Age : {{ pet.age }} </p>
+<p> Poids : {{ pet.weight }} </p>
+<p> Adopté :
+{% if (pet.state == 1) %}
+    Oui
+{% else %}  
+    Non
+{% endif %} 
+</p>
+<p><img class="pet-img" src="{{ pet.urlImg }}" alt="Image Pet" style="width:250px ; height:150px;"></p>
+
+<hr>
+{% endfor %}
+</div>
+{% endblock %}
