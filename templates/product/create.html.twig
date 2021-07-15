@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+<h1>Création d'un produit</h1>
+
+<form action="" method="post">
+    <label>Nom</label>
+    <input type="text" name="name" placeholder="nom de l'article">
+    <br>
+    <label>Prix</label> 
+    <input type="number" name="price" placeholder="Contenu de l'article">
+    <br>
+    <label>Type</label> 
+    <input type="text" name="type" placeholder="Contenu de l'article"> 
+    <br>
+    <label>Stock</label> 
+    <input type="number" name="stock" placeholder="Contenu de l'article">
+    <br>
+    <label>Lien img</label> 
+    <input type="text" name="img" placeholder="Contenu de l'article">
+    <br>
+    <label>Contenu</label> 
+    <textarea name="description" placeholder="Contenu de l'article"></textarea> 
+    <br>  <br>
+    <input type="submit" value="Enregistrer"> 
+</form>
+
+{% endblock %}

@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\PetRepository;
+use App\Repository\PetsRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=PetRepository::class)
+ * @ORM\Entity(repositoryClass=PetsRepository::class)
  */
-class Pet
+class Pets
 {
     /**
      * @ORM\Id
@@ -50,7 +50,12 @@ class Pet
     /**
      * @ORM\Column(type="boolean")
      */
-    private $adopt;
+    private $state;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $urlImg;
 
     public function getId(): ?int
     {
@@ -129,14 +134,26 @@ class Pet
         return $this;
     }
 
-    public function getAdopt(): ?bool
+    public function getState(): ?bool
     {
-        return $this->adopt;
+        return $this->state;
     }
 
-    public function setAdopt(bool $adopt): self
+    public function setState(bool $state): self
     {
-        $this->adopt = $adopt;
+        $this->state = $state;
+
+        return $this;
+    }
+
+    public function getUrlImg(): ?string
+    {
+        return $this->urlImg;
+    }
+
+    public function setUrlImg(string $urlImg): self
+    {
+        $this->urlImg = $urlImg;
 
         return $this;
     }
