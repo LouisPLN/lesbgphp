@@ -3,8 +3,9 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
-    ],
-    "content-hash": "eadc46e6638ba763106c0188bbd021d7",
+    ]
+    "content-hash": "66099a947fc36334d0352538dcd2b5f0",
+
     "packages": [
         {
             "name": "composer/package-versions-deprecated",

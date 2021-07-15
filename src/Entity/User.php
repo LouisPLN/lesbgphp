@@ -2,14 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass=UserRepository::class)
- * @ORM\Table(name="`user`")
+ * @ORM\Entity(repositoryClass=App/Repository/UserRepository)
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id
@@ -35,6 +36,7 @@ class User
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email()
      */
     private $mail;
 
@@ -44,9 +46,14 @@ class User
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @Assert\EqualTo(propertyPath="password", message="Les mots de passe ne correspondent pas")
+     */
+    public $confirmPassword;
+
+    /**
+     * @ORM\Column(type="json")
      */
-    private $role;
+    private $roles;
 
     public function getId(): ?int
     {
@@ -113,15 +120,35 @@ class User
         return $this;
     }
 
-    public function getRole(): ?string
+    public function eraseCredentials() {}
+
+    public function getSalt() {}
+
+    public function getRoles(): array
     {
-        return $this->role;
+        $roles = $this->roles;
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
     }
 
-    public function setRole(string $role): self
+    public function addRole(string $role): self
     {
-        $this->role = $role;
+        if ($this->roles) {
+            if (!in_array($role, $this->roles, true)) {
+                $this->roles[] = $role;
+            }
+
+            return $this;
+        }
+
+        $this->roles[] = $role;
 
         return $this;
+    }
+
+    public function getUserIdentifier()
+    {
+        
     }
 }
