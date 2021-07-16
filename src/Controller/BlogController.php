@@ -34,15 +34,14 @@ class BlogController extends AbstractController
     public function create(Request $request, EntityManagerInterface $manager)
     {
 
-        dump($request);
-
         if($request->request->count() > 0) 
         { 
             $post = new Post;
             
             $post->setTitle($request->request->get('title')) 
                 ->setDescription($request->request->get('description')) 
-                ->setCreatedAt(new \DateTime()); 
+                ->setCreatedAt(new \DateTime())
+                ->setUser($this->getUser());
             $manager->persist($post); 
             $manager->flush(); 
 

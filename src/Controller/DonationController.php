@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 class DonationController extends AbstractController
 {
     /**
-     * @Route("/donation", name="donation")
+     * @Route("/app/donation", name="donation")
      */
     public function index(): Response
     {
@@ -27,7 +27,7 @@ class DonationController extends AbstractController
     }
 
     /**
-     * @Route("/donation/new", name="donation_create")
+     * @Route("/app/donation/new", name="donation_create")
      */
     public function create(Request $request, EntityManagerInterface $manager)
     {
@@ -38,7 +38,8 @@ class DonationController extends AbstractController
 
             
             $post->setAmount($request->request->get('amount')) 
-                ->setDate($date);
+                 ->setDate($date)
+                 ->setUser($this->getUser());
             $manager->persist($post); 
             $manager->flush(); 
 

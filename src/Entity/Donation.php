@@ -27,6 +27,11 @@ class Donation
      */
     private $date;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="donations")
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +57,18 @@ class Donation
     public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
