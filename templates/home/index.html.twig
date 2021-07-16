@@ -92,14 +92,11 @@ nav {
     text-align: center;
     border-radius: 4px;
     color: #fff;
-    background-color: transparent;
-    background-image: -webkit-gradient(linear, left top, right top, from(#4548b0), to(#5b43c2));
-    background-image: linear-gradient(90deg, #4548b0, #5b43c2);
-    transition: border-color .4s,transform .4s,box-shadow .4s,-webkit-transform .4s;
+    background-color: #723647;
 }
 
 .signIn:hover {
-    box-shadow: 0 6px 12px -2px rgb(145 101 247 / 60%);
+    box-shadow: 0 6px 12px -2px #723647;
     -webkit-transform: translate(0,-3px);
     -ms-transform: translate(0,-3px);
     transform: translate(0,-3px);
@@ -121,21 +118,21 @@ nav {
 
 
 .logIn:hover {
-    border: 2px solid #4548b0;
+    border: 2px solid #723647;
     background-color: transparent;
     background-image: none;
     -webkit-transform: translate(0,-3px);
     -ms-transform: translate(0,-3px);
     transform: translate(0,-3px);
-    color: #4548b0;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    color: #723647;
+    box-shadow: #303030 0px 4px 20px 0px;
 }
 
 
 /* END BUTTONS */
 
 .ulOne {
-    width: 280px;
+    width: 260px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -205,6 +202,27 @@ footer {
     text-align: center;
     width: 100%;
     color: #303030;
+}
+
+@media (max-width: 1100px) {
+
+    nav {
+        width: 90%;
+    }
+
+    main {
+        width: 90%;
+    }
+
+    .homeImg {
+        width:90%;
+    }
+}
+
+@media (max-width: 1000px) {
+    main {
+        flex-direction: column;
+    }
 }
 
     </style>
