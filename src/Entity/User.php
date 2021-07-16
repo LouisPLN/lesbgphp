@@ -67,10 +67,16 @@ class User implements UserInterface
      */
     private $donations;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Pets::class, mappedBy="user")
+     */
+    private $pets;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
         $this->donations = new ArrayCollection();
+        $this->pets = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -233,5 +239,35 @@ class User implements UserInterface
     public function __toString()
     {
         return $this->firstName  . " " . $this->lastName;
+    }
+
+    /**
+     * @return Collection|Pets[]
+     */
+    public function getPets(): Collection
+    {
+        return $this->pets;
+    }
+
+    public function addPet(Pets $pet): self
+    {
+        if (!$this->pets->contains($pet)) {
+            $this->pets[] = $pet;
+            $pet->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePet(Pets $pet): self
+    {
+        if ($this->pets->removeElement($pet)) {
+            // set the owning side to null (unless already changed)
+            if ($pet->getUser() === $this) {
+                $pet->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

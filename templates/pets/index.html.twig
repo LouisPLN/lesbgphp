@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Adoptoutou - Animaux{% endblock %}
+{% block title %}Adoptoutou - Animaux {% endblock %}
 
 {% block body %}
 
@@ -9,11 +9,9 @@
 
 <h2> Nom : {{ pet.name }} </h2>
 
+<p> Id : {{ pet.id }} </p>
 <p> Type : {{ pet.type }} </p>
 <p> Race : {{ pet.race }} </p>
-<p> Couleur : {{ pet.color }} </p>
-<p> Age : {{ pet.age }} </p>
-<p> Poids : {{ pet.weight }} </p>
 <p> Adopté :
 {% if (pet.state == 1) %}
     Oui
@@ -23,7 +21,10 @@
 </p>
 <p><img class="pet-img" src="{{ pet.urlImg }}" alt="Image Pet" style="width:250px ; height:150px;"></p>
 
+<a href="{{path('pets_id',{'id':pet.id})}}" name="btn_adopt"> <button>Détail</button></a>
+
 <hr>
 {% endfor %}
 </div>
+
 {% endblock %}

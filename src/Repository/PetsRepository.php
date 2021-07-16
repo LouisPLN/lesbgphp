@@ -22,7 +22,7 @@ class PetsRepository extends ServiceEntityRepository
     // /**
     //  * @return Pets[] Returns an array of Pets objects
     //  */
-    /*
+    
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('p')
@@ -34,7 +34,7 @@ class PetsRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?Pets

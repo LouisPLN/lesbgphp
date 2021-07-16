@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Adoptoutou - Animaux{% endblock %}
+
+{% block body %}
+
+<div>
+<h2> Nom : {{ pet.name }} </h2>
+
+<p> Id : {{ pet.id }} </p>
+<p> Type : {{ pet.type }} </p>
+<p> Race : {{ pet.race }} </p>
+<p> Age : {{ pet.age }} </p>
+<p> Poids : {{ pet.weight }} </p>
+<p> Couleur : {{ pet.color }} </p>
+<p> Adopté :
+{% if (pet.state == 1) %}
+    Oui
+{% else %}  
+    Non
+{% endif %} 
+</p>
+<p><img class="pet-img" src="{{ pet.urlImg }}" alt="Image Pet" style="width:250px ; height:150px;"></p>
+
+<a> <button id="btn_adopt">Adoptez le !</button></a>
+
+<div id="form_adoption" style="display:none;">
+    <form action="/ma-page-de-traitement" method="post">
+    <div>
+        <label for="name">Nom :</label>
+        <input type="text" id="name" name="user_name">
+    </div>
+    <div>
+        <label for="mail">e-mail :</label>
+        <input type="email" id="mail" name="user_mail">
+    </div>
+    <div>
+        <input type="submit" id="valid" name="user_valid">
+    </div>
+</form>
+</div>
+
+<hr>
+
+</div>
+{% block javascripts %}
+
+<script>
+    document.getElementById("btn_adopt").onclick = function(){
+        
+        var y =  document.getElementById("form_adoption");
+
+        if (y.style.display === "none") {
+        y.style.display = "block";
+        } 
+        
+        else {
+        y.style.display = "none";
+        }
+    }
+</script>
+
+{% endblock %}
+
+{% endblock %}
