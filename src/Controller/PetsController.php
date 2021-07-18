@@ -3,11 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Pets;
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Request;
+
 
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -86,12 +88,16 @@ class PetsController extends AbstractController
     }
 
     /**
-     * @Route("/pets/adopt", name="pets_adopt")
+     * @Route("/pets/adopt/{id}", name="pets_adopt")
      */
-    public function adoption(int $id)
+    public function adoption($id)
     {
         $entityManager = $this->getDoctrine()->getManager();
         $pet = $entityManager->getRepository(Pets::class)->find($id);
+
+        $userMail =  $_POST["user_mail"];
+        $user = $entityManager->getRepository(User::class)->findOneBy(['mail'=> $userMail]);
+        $userId = $user->getId();
 
         if (!$pet) {
             throw $this->createNotFoundException(
@@ -99,11 +105,19 @@ class PetsController extends AbstractController
             );
         }
 
-        //$product->setName('New product name!');
-        //$entityManager->flush();
+        if (!$userId) {
+            throw $this->createNotFoundException(
+                'No user found for this mail '.$userId
+            );
+        }
 
-        return $this->redirectToRoute('pets_id', [
-            'id' => $pet->getId()
+        $user->addPet($pet);
+        $pet->setState(1);
+        $entityManager->flush();
+        
+        return $this->render('pets/adopted.html.twig', [
+            'user_mail' =>  $userMail,
+            'pet' => $pet
         ]);
 
     }

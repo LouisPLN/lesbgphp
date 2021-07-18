@@ -6,7 +6,6 @@
 
 <div>
 <h2> Nom : {{ pet.name }} </h2>
-
 <p> Id : {{ pet.id }} </p>
 <p> Type : {{ pet.type }} </p>
 <p> Race : {{ pet.race }} </p>
@@ -18,18 +17,10 @@
     Oui
 {% else %}  
     Non
-{% endif %} 
-</p>
-<p><img class="pet-img" src="{{ pet.urlImg }}" alt="Image Pet" style="width:250px ; height:150px;"></p>
-
 <a> <button id="btn_adopt">Adoptez le !</button></a>
 
 <div id="form_adoption" style="display:none;">
-    <form action="/ma-page-de-traitement" method="post">
-    <div>
-        <label for="name">Nom :</label>
-        <input type="text" id="name" name="user_name">
-    </div>
+    <form action="{{ path('pets_adopt',{ 'id' :pet.id} )}}" method="post">
     <div>
         <label for="mail">e-mail :</label>
         <input type="email" id="mail" name="user_mail">
@@ -39,7 +30,9 @@
     </div>
 </form>
 </div>
-
+{% endif %} 
+</p>
+<p><img class="pet-img" src="{{ pet.urlImg }}" alt="Image Pet" style="width:250px ; height:150px;"></p>
 <hr>
 
 </div>

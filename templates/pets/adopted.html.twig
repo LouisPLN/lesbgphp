@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Adoptoutou - Animaux {% endblock %}
+
+{% block body %}
+
+
+<h1> Nom : {{ pet.name}} </h1>
+
+
+<h3> Adopté par : {{ user_mail}}</h3>
+
+<p><img class="pet-img" src="{{ pet.urlImg }}" alt="Image Pet" style="width:250px ; height:150px;"></p>
+
+
+{% endblock %}
