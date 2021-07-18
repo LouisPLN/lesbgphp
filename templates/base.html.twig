@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" >
+    <link rel='stylesheet' href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>{% block title %}Adoptoutou{% endblock %}</title>
@@ -25,14 +26,14 @@
     {% if app.user %}
     <div class="sidebar">
         <div class="logo-details">
-            <img src="../../img/logoPOO.png" class="bx bxl-c-plus-plus icon" alt="logo">
+            <img src="../../img/logoPOO.png" class="icon" alt="logo">
                 <div class="logo_name">Adoptoutou</div>
                     <i class='bx bx-menu' id="btn" ></i>
                 </div>
             <ul class="nav-list">
                 <li>
                 
-                    <a href="{{path('accueil')}}">
+                    <a href="#">
                         <i class='bx bx-grid-alt'></i>
                         <span class="links_name">Accueil</span>
                     </a>
@@ -78,30 +79,29 @@
     </div>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
         *{
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Poppins" , sans-serif;
+            font-family: 'Rubik', sans-serif;
         }
         .icon {
-            width: 30px;
-            margin-right: 10px;
+            width: 50px;
+            margin-right: 15px;
         }
         .sidebar{
             position: fixed;
             left: 0;
             top: 0;
             height: 100%;
-            width: 78px;
+            width: 90px;
             background: #FFF;
-            padding: 6px 14px;
+            padding: 30px 20px;
             z-index: 99;
             transition: all 0.5s ease;
         }
         .sidebar.open{
-            width: 250px;
+            width: 300px;
         }
         .sidebar .logo-details{
             height: 60px;
@@ -131,7 +131,7 @@
             transform: translateY(-50%);
             font-size: 22px;
             transition: all 0.4s ease;
-            font-size: 23px;
+            font-size: 35px;
             text-align: center;
             cursor: pointer;
             transition: all 0.5s ease;
@@ -148,12 +148,12 @@
             line-height: 60px;
         }
         .sidebar .nav-list{
-            margin-top: 20px;
+            margin-top: 100px;
             height: 100%;
         }
         .sidebar li{
             position: relative;
-            margin: 8px 0;
+            margin: 30px 0;
             list-style: none;
         }
         .sidebar li .tooltip{
@@ -184,7 +184,6 @@
         .sidebar input{
             font-size: 15px;
             color: #FFF;
-            font-weight: 400;
             outline: none;
             height: 50px;
             width: 100%;
@@ -202,7 +201,7 @@
             display: flex;
             height: 100%;
             width: 100%;
-            border-radius: 6px;
+            border-radius: 4px;
             align-items: center;
             text-decoration: none;
             transition: all 0.4s ease;
@@ -213,7 +212,7 @@
         }
         .sidebar li a .links_name{
             color: #303030;
-            font-size: 15px;
+            font-size: 18px;
             font-weight: 400;
             white-space: nowrap;
             opacity: 0;
@@ -232,7 +231,7 @@
         .sidebar li i{
             height: 50px;
             line-height: 50px;
-            font-size: 18px;
+            font-size: 30px;
             border-radius: 12px;
         }
         .sidebar li.profile{
