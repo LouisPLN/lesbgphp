@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/product", name="product")
+     * @Route("/app/product", name="product")
      */
     public function index(): Response
     {

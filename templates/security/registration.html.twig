@@ -4,6 +4,10 @@
 
 {% block body %}
 
+{% if app.user %}
+    <script>window.location.href = "{{path('accueil')}}"</script>
+{% endif %}
+
 {{ form_start(form) }}
 {{ form_errors(form) }}
 <div class="container">

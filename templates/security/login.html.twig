@@ -3,6 +3,10 @@
 {% block title %}Adoptoutou - Connexion{% endblock %}
 
 {% block body %}
+
+    {% if app.user %}
+        <script>window.location.href = "{{path('accueil')}}"</script>
+    {% endif %}
     
     <div class="container">
         <div class="wrapper">
@@ -10,12 +14,6 @@
                 <form method="post">
                     {% if error %}
                         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                    {% endif %}
-
-                    {% if app.user %}
-                        <div class="mb-3">
-                            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-                        </div>
                     {% endif %}
                     <div class="row">
                         <i class="fas fa-user"></i>
