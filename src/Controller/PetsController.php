@@ -16,7 +16,7 @@ use Doctrine\ORM\EntityManagerInterface;
 class PetsController extends AbstractController
 {
     /**
-     * @Route("/pets", name="pets")
+     * @Route("/app/pets", name="pets")
      */
     public function index(): Response
     {
@@ -31,7 +31,7 @@ class PetsController extends AbstractController
     }
 
     /**
-     * @Route("/pets/{id}", name="pets_id")
+     * @Route("/app/pets/{id}", name="pets_id")
      */
     public function detail(int $id): Response
     {
@@ -88,7 +88,7 @@ class PetsController extends AbstractController
     }
 
     /**
-     * @Route("/pets/adopt/{id}", name="pets_adopt")
+     * @Route("/app/pets/adopt/{id}", name="pets_adopt")
      */
     public function adoption($id)
     {

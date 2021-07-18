@@ -4,6 +4,9 @@
 
 {% block body %}
 
+{% if app.user %}
+    <script>window.location.href = "{{path('accueil')}}"</script>
+{% endif %}
  <div class="container">
         <header>
             <nav>
