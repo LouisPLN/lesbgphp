@@ -57,6 +57,12 @@ class Pets
      */
     private $urlImg;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="pets")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -154,6 +160,18 @@ class Pets
     public function setUrlImg(string $urlImg): self
     {
         $this->urlImg = $urlImg;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

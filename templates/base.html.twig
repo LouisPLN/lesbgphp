@@ -9,6 +9,7 @@
     <link rel='stylesheet' href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>{% block title %}Adoptoutou{% endblock %}</title>
     {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
@@ -40,31 +41,38 @@
                 </li>
                 <li>
                     <a href="{{path('product')}}">
-                        <i class='bx bx-user' ></i>
+                        <i class='bx bx-purchase-tag' ></i>
                         <span class="links_name">Produits</span>
                     </a>
                     <span class="tooltip">Produits</span>
                 </li>
                 <li>
                     <a href="{{path('pets')}}">
-                        <i class='bx bx-user' ></i>
+                        <i class='bx bx-bone' ></i>
                         <span class="links_name">Animaux</span>
                     </a>
                     <span class="tooltip">Animaux</span>
                 </li>
                 <li>
                     <a href="{{path('donation')}}">
-                        <i class='bx bx-user' ></i>
+                        <i class='bx bx-money' ></i>
                         <span class="links_name">Donation</span>
                     </a>
                     <span class="tooltip">Donation</span>
                 </li>
                 <li>
                     <a href="{{path('blog')}}">
-                        <i class='bx bx-pie-chart-alt-2' ></i>
+                        <i class='bx bx-news' ></i>
                         <span class="links_name">Blog</span>
                     </a>
                     <span class="tooltip">Blog</span>
+                </li>
+                <li>
+                    <a href="{{path('app_logout')}}">
+                        <i class='bx bx-log-out' ></i>
+                        <span class="links_name">Déconnexion</span>
+                    </a>
+                    <span class="tooltip">Déconnexion</span>
                 </li>
             </ul>
         </div>
