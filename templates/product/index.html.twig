@@ -15,10 +15,49 @@
 <p> Stock : {{ product.stock }} </p>
 <p><img class="pet-img" src="{{ product.urlImg }}" alt="Image Pet" style="width:250px ; height:150px;"></p>
 
+Quantité:<a name="btn_adopt"> 
+    <input type="number" id="qtt" name="qtt">
+    <button id="add_cart">Ajout Panier !</button>
+</a>
 
-<a href="" name="btn_adopt"> <button>Buy it now !</button></a>
+<div id="panier" style="display:none;">
+</div>
 <hr>
 
 {% endfor %}
-</div>
+{% block javascripts %}
+
+<script>
+    var tag = document.createElement("h3");
+    var text = document.createTextNode("Total du Panier :");
+    tag.appendChild(text);
+
+    var element = document.getElementById("panier");
+    element.appendChild(tag); 
+
+
+    document.getElementById("add_cart").onclick = function(){
+        
+        var y =  document.getElementById("panier");
+
+        var amount = document.createElement("p");
+        var qttProduct = document.getElementById("qtt").value;
+        var textAmount = document.createTextNode(qttProduct + " products");
+
+        if (y.style.display === "none") {
+            y.style.display = "block";
+        }
+
+        if(document.getElementById("cart_text")){
+            document.getElementById("cart_text").innerText = qttProduct + " products";
+        } else {
+            amount.appendChild(textAmount);
+            amount.setAttribute("id", "cart_text");
+            element.appendChild(amount);
+        }
+    }
+
+</script>
+
+{% endblock %}
 {% endblock %}
