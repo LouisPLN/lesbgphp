@@ -32,6 +32,15 @@ class DonationRepository extends ServiceEntityRepository
         ;
     }
     
+    public function findAllAmount()
+    {
+        return $this->createQueryBuilder('d')
+            ->select('d.amount')
+            ->orderBy('d.date', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
     /*
     public function findOneBySomeField($value): ?Donation

@@ -7,14 +7,18 @@
 
 {% for donation in donations %}
 
-<h2> Donateur : Récupérer le nom du donateur </h2>
-
-<p> {{ donation.user }} </p>
+<h2> Donateur : {{ donation.user }} </h2>
 
 <p> Montant : {{ donation.amount }}€ </p>
 <p> Date : {{ donation.date|date('d-m-Y H:i:s') }} </p>
 
 <hr>
+
 {% endfor %}
+
+<button><a href="{{ path('donation_create') }}" class="donate">Faire un don</a></button>
+
+<h3> Total des dons : {{ total }}€ </h3>
+
 </div>
 {% endblock %}

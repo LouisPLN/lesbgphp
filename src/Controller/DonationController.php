@@ -20,9 +20,17 @@ class DonationController extends AbstractController
 
         $donations = $repo->findAllDesc();
 
+        $amountTable = $repo->findAllAmount();
+        $total = 0;
+
+        foreach ($amountTable as $row) {
+            $total += $row["amount"];
+        }
+        
         return $this->render('donation/index.html.twig', [
             'controller_name' => 'DonationController',
-            'donations' => $donations
+            'donations' => $donations,
+            'total' => $total
         ]);
     }
 
