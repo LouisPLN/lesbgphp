@@ -72,11 +72,17 @@ class User implements UserInterface
      */
     private $pets;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="user")
+     */
+    private $products;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
         $this->donations = new ArrayCollection();
         $this->pets = new ArrayCollection();
+        $this->products = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -265,6 +271,36 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($pet->getUser() === $this) {
                 $pet->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Product[]
+     */
+    public function getProducts(): Collection
+    {
+        return $this->products;
+    }
+
+    public function addProduct(Product $product): self
+    {
+        if (!$this->products->contains($product)) {
+            $this->products[] = $product;
+            $product->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduct(Product $product): self
+    {
+        if ($this->products->removeElement($product)) {
+            // set the owning side to null (unless already changed)
+            if ($product->getUser() === $this) {
+                $product->setUser(null);
             }
         }
 
