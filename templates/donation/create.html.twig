@@ -1,17 +1,101 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Adoptoutou - Faire un don{% endblock %}
+{% block title %}Adoptoutou | Faire une donation 🐶{% endblock %}
 
 {% block body %}
 
-<h1>Création d'un animal</h1>
+<div class="container">
+<main>
+
+<h2>Faire un don à Adoptoutou 🐶</h2>
 
 <form action="" method="post">
-    <label>Montant</label>
-    <input type="text" name="amount" placeholder="montant à donné">
-    <br>
-    <br>  <br>
-    <input type="submit" value="Enregistrer"> 
+    <label>Montant du don</label>
+    <input class="text" type="text" name="amount" placeholder="Montant de votre souhait">
+    <input class="save" type="submit" value="DONNER MOI D'LA MOULAGA"> 
 </form>
+
+</main>
+</div>
+
+<style> 
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+.container {
+    background: #f1f1f1;
+    min-height: 100vh;
+    padding: 50px;
+}
+
+main {
+    margin: auto;
+    width: 70%;
+}
+
+main h2 {
+    text-align: center;
+    font-size: 40px;
+    color: #303030;
+    margin-bottom: 50px
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+form label {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #303030;
+}
+
+form input.text{
+    height: 40px;
+    width: 30%;
+    outline: none;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid lightgrey;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+form input.save {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border: none;
+    width: 30%;
+    margin: auto;
+    padding: 15px 80px;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #723647;
+    transition: border-color .4s,transform .4s,box-shadow .4s,-webkit-transform .4s;
+}  
+
+input.save:hover {
+    box-shadow: 0 6px 12px -2px #723647;
+    -webkit-transform: translate(0,-3px);
+    -ms-transform: translate(0,-3px);
+    transform: translate(0,-3px);
+}
+
+
+</style>
 
 {% endblock %}

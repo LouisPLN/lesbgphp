@@ -1,24 +1,164 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Adoptoutou - Donations{% endblock %}
+{% block title %}Adoptoutou | Donations 🐶{% endblock %}
 
 {% block body %}
 
+<div class="container">
+<main>
+
+<h2>Dons Adoptoutou 🐶</h2>
+
+<a href="{{ path('donation_create') }}">FAIRE UN DON</a>
+
+<h3 class="totalDon"> Total des dons : {{ total }}€ <br> <p>1 don = 1 adoption</p></h3>
 
 {% for donation in donations %}
 
-<h2> Donateur : {{ donation.user }} </h2>
+<div class="postCard">
+
+<div class="topPost">
+
+<h5> Donateur : {{ donation.user }} </h5>
+
+</div>
+
+<div class="midPost">
 
 <p> Montant : {{ donation.amount }}€ </p>
+
+</div>
+
+<div class="bottomPost">
+
 <p> Date : {{ donation.date|date('d-m-Y H:i:s') }} </p>
 
-<hr>
+</div>
+
+</div>
 
 {% endfor %}
 
-<button><a href="{{ path('donation_create') }}" class="donate">Faire un don</a></button>
+<img src="../../img/pattes.png">
 
-<h3> Total des dons : {{ total }}€ </h3>
-
+</main>
 </div>
+
+<style> 
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+.container {
+    background: #f1f1f1;
+    min-height: 100vh;
+    padding: 50px;
+}
+
+.container a{ 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    margin: auto;
+    padding: 15px 80px;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #723647;
+    transition: border-color .4s,transform .4s,box-shadow .4s,-webkit-transform .4s;
+}
+
+.container a:hover {
+    box-shadow: 0 6px 12px -2px #723647;
+    -webkit-transform: translate(0,-3px);
+    -ms-transform: translate(0,-3px);
+    transform: translate(0,-3px);
+}
+
+.totalDon{
+    width: 35%;
+    margin: auto;
+    padding: 10px;
+    border: 2px solid #303030;
+    border-radius: 4px;
+    color: #303030;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.totalDon p{
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+main {
+    margin: auto;
+    width: 70%;
+}
+
+main h2 {
+    text-align: center;
+    font-size: 40px;
+    color: #303030;
+    margin-bottom: 50px
+}
+
+.postCard {
+    margin: auto;
+    width: 70%;
+    height: auto;
+    padding: 30px;
+    border-bottom: 2px solid #723647;
+    margin-bottom: 20px;
+}
+
+.topPost {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.topPost h5 {
+    margin-bottom: 30px;
+    font-size: 20px;
+    color: #303030;
+}
+
+.midPost {
+    display: flex;
+    align-items: center;
+}
+
+.midPost p {
+    margin-bottom: 20px;
+    font-size: 15px;
+    color: #303030;
+}
+
+.bottomPost {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.bottomPost p {
+    font-size: 13px;
+    color: #000;
+    font-weight: bold;
+}
+
+main img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+</style>
 {% endblock %}
