@@ -3,53 +3,210 @@
 {% block title %}Adoptoutou | Acceuil 🐶{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Bienvenue {{ last_username }}! ✅</h1>
-</div>
+<div class="container">
+    <h2>Accueil Adoptoutou 🐶</h2>
+    <main>
 
-<div id="container">
+        
 
 <div id="column-left">
-{% for pet in pets %}
+    {% for pet in pets %}
 
-<h2> Nom :<a id='name-{{ pet.name }}'>{{ pet.name }} </a></h2>
+        <div class="cardPet">
 
-<!--<p> Id : {{ pet.id }} </p>-->
-<p> Type : {{ pet.type }} </p>
-<p> Race : {{ pet.race }} </p>
-<p> Adopté :
-{% if (pet.state == 1) %}
-    Oui
-{% else %}  
-    Non
-{% endif %} 
-</p>
-<p><img class="pet-img" src="{{ pet.urlImg }}" alt="Image Pet" style="width:200px ; height:150px;"></p>
+            <div class="titlePet"><small>Nom : </small><h3> {{ pet.name }}</h3></div>
 
-<hr>
-{% endfor %}
+            <p> Référence : {{ pet.id }} </p>
+            <p> Type : {{ pet.type }} </p>
+            <p> Race : {{ pet.race }} </p>
+            <p> Adopté :
+                {% if (pet.state == 1) %}
+                Oui
+                {% else %}
+                Non
+                {% endif %}
+            </p>
+            <img class="pet-img" src="{{ pet.urlImg }}" alt="Image Pet">
+
+            <a class="detail" href="{{path('pets_id',{'id':pet.id})}}" name="btn_adopt">Détail</a>
+
+        </div>
+
+    {% endfor %}
 </div>
 
 <div class="column-right">
-{% for product in products %}
+    {% for product in products %}
 
-<h2> Nom :<a id='name-{{product.id}}'>{{ product.name }} </a></h2>
+        <div class="cardProduct">
 
-<!--<p> Id : {{ product.id }} </p>-->
-<p> Description : {{ product.description }} </p>
-<p>Prix :<a id='price-{{product.id}}'>{{ product.price }} </a>€</p>
-<p> Type de produit : {{ product.type }} </p>
-<p> Stock : {{ product.stock }} </p>
-<p><img class="pet-img" src="{{ product.urlImg }}" alt="Image Pet" style="width:250px ; height:150px;"></p>
+          <div id="card_product">
 
-<hr>
-{% endfor %}
+            <div class="titleProduct"><small>Nom : </small>
+              <h3><a id='name-{{product.id}}'>{{ product.name }} </a></h3>
+            </div>
+
+            <p> Référence : {{ product.id }} </p>
+            <p> Description : {{ product.description }} </p>
+            <p>Prix :<a id='price-{{product.id}}'>{{ product.price }} </a>€</p>
+            <p> Type de produit : {{ product.type }} </p>
+            <p> Stock : {{ product.stock }} </p>
+            <img class="pet-img" src="{{ product.urlImg }}" alt="Image Pet">
+          </div>
+
+        </div>
+
+        {% endfor %}
 </div>
 
-</div>
+
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Rubik', sans-serif;
+    }
+
+    .container {
+        background: #f1f1f1;
+        min-height: 100vh;
+        padding: 50px;
+    }
+
+        .container h2 {
+        text-align: center;
+        font-size: 40px;
+        color: #303030;
+        margin-bottom: 50px
+    }
+
+    main {
+        margin: auto;
+        width: 70%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #column-left,
+    #column-right {
+        width: 50%;
+    }
+
+    .cardPet {
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 500px !important;
+        max-height: 700px;
+        margin-top: 30px;
+        padding: 30px;
+        border-radius: 4px;
+        border: 2px solid #303030;
+        background: #fff;
+    }
+
+    .cardPet .titlePet {
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    .cardPet small {
+        margin-top: 5px;
+        margin-right: 5px;
+        font-size: 18px;
+        color: grey;
+    }
+
+    .cardPet h3 {
+        font-size: 25px;
+        color: #303030;
+    }
+    
+    .cardPet p {
+        font-size: 18px;
+        color: #303030;
+        margin-bottom: 10px;
+    }
+
+    .cardPet img {
+        max-width: 100%;
+        max-height: 300px;
+        border-radius: 4px;
+        border: 2px solid #723647;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    a.detail {
+        padding: 15px 80px;
+        font-size: 15px;
+        text-align: center;
+        border-radius: 4px;
+        color: #fff;
+        text-decoration: none;
+        background-color: #723647;
+        transition: border-color .4s, transform .4s, box-shadow .4s, -webkit-transform .4s;
+    }
+
+    a.detail:hover {
+        box-shadow: 0 6px 12px -2px #723647;
+        -webkit-transform: translate(0, -3px);
+        -ms-transform: translate(0, -3px);
+        transform: translate(0, -3px);
+    }
+
+    .cardProduct {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 500px !important;
+    max-height: 700px;
+    margin-top: 30px;
+    padding: 30px;
+    border-radius: 4px;
+    border: 2px solid #303030;
+    background: #fff;
+  }
+
+  .cardProduct .titleProduct {
+    display: flex;
+    margin-bottom: 20px;
+  }
+
+  .cardProduct small {
+    margin-top: 5px;
+    margin-right: 5px;
+    font-size: 18px;
+    color: grey;
+  }
+
+  .cardProduct h3 {
+    font-size: 25px;
+    color: #303030;
+  }
+
+
+  .cardProduct p {
+    font-size: 18px;
+    color: #303030;
+    margin-bottom: 10px;
+  }
+
+  .cardProduct img {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 4px;
+    border: 2px solid #723647;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  </style>
 {% endblock %}

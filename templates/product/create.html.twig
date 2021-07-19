@@ -4,28 +4,143 @@
 
 {% block body %}
 
-<h1>Création d'un produit</h1>
+<div class="container">
+    <main>
+
+        <h2>Ajouter un produit sur Adoptoutou 🐶</h2>
 
 <form action="" method="post">
     <label>Nom</label>
-    <input type="text" name="name" placeholder="nom de l'article">
+    <input class="text" type="text" name="name" placeholder="Nom de l'article">
     <br>
     <label>Prix</label> 
-    <input type="number" name="price" placeholder="Contenu de l'article">
+    <input class="text" type="number" name="price" placeholder="Prix de l'article">
     <br>
     <label>Type</label> 
-    <input type="text" name="type" placeholder="Contenu de l'article"> 
+    <input class="text" type="text" name="type" placeholder="Type d'article"> 
     <br>
     <label>Stock</label> 
-    <input type="number" name="stock" placeholder="Contenu de l'article">
+    <input class="text" type="number" name="stock" placeholder="Stock de l'article">
     <br>
     <label>Lien img</label> 
-    <input type="text" name="img" placeholder="Contenu de l'article">
+    <input class="text" type="text" name="img" placeholder="Photo de l'article">
     <br>
     <label>Contenu</label> 
-    <textarea name="description" placeholder="Contenu de l'article"></textarea> 
+    <textarea class="text" name="description" placeholder="Contenu de l'article"></textarea> 
     <br>  <br>
-    <input type="submit" value="Enregistrer"> 
+    <input class="save" type="submit" value="ENREGISTRER"> 
 </form>
 
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Rubik', sans-serif;
+    }
+
+    .container {
+        background: #f1f1f1;
+        min-height: 100vh;
+        padding: 50px;
+    }
+
+    .container a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+        margin: auto;
+        padding: 15px 80px;
+        font-size: 15px;
+        text-align: center;
+        border-radius: 4px;
+        text-decoration: none;
+        color: #fff;
+        background-color: #723647;
+        transition: border-color .4s, transform .4s, box-shadow .4s, -webkit-transform .4s;
+    }
+
+    .container a:hover {
+        box-shadow: 0 6px 12px -2px #723647;
+        -webkit-transform: translate(0, -3px);
+        -ms-transform: translate(0, -3px);
+        transform: translate(0, -3px);
+    }
+
+    main {
+        margin: auto;
+        width: 70%;
+    }
+
+    main h2 {
+        text-align: center;
+        font-size: 40px;
+        color: #303030;
+        margin-bottom: 50px
+    }
+    
+    form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+form label {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #303030;
+}
+
+form input.text{
+    height: 40px;
+    width: 30%;
+    outline: none;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid lightgrey;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+form textarea.text {
+        height: 40px;
+    width: 30%;
+    outline: none;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid lightgrey;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}  
+
+form input.save {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border: none;
+    width: 30%;
+    margin: auto;
+    padding: 15px 80px;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #723647;
+    transition: border-color .4s,transform .4s,box-shadow .4s,-webkit-transform .4s;
+}  
+
+input.save:hover {
+    box-shadow: 0 6px 12px -2px #723647;
+    -webkit-transform: translate(0,-3px);
+    -ms-transform: translate(0,-3px);
+    transform: translate(0,-3px);
+}
+</style>
 {% endblock %}

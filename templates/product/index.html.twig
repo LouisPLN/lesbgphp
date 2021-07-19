@@ -4,95 +4,233 @@
 
 {% block body %}
 
-<div id="panier">
-{% for product in products %}
-<div id="card_product">
-<h5>Nom :<a id='name-{{product.id}}'>{{ product.name }} </a></h5>
-<p> id : {{ product.id }} </p>
-<p> Description : {{ product.description }} </p>
-<p>Prix :<a id='price-{{product.id}}'>{{ product.price }} </a>€</p>
-<p> Type de produit : {{ product.type }} </p>
-<p> Stock : {{ product.stock }} </p>
-<p><img class="pet-img" src="{{ product.urlImg }}" alt="Image Pet" style="width:250px ; height:150px;"></p>
+<div class="container">
+  <main>
 
-Quantité:<a name="btn_adopt"> 
-    <input type="number" id='qtt-{{product.id}}'>
-    <button id='btn-{{product.id}}' >Ajout Panier !</button>
-</a>
+    <h2>Produits Adoptoutou 🐶</h2>
+
+    {% if is_granted('ROLE_ADMIN') %}
+
+    <a class="add" href="{{ path('product_create') }}">AJOUTER UN PRODUIT</a>
+
+    {% endif %}
+
+    <div class="panier">
+      <div id="cart">
+        <h3> Votre Panier :</h3>
+      </div>
+      <br>
+      <button id='buy'>Paiement !</button>
+      <br><br>
+      <div id="paie">
+        <h3> Total Paiement :</h3>
+      </div>
+    </div>
+
+    <div id="panier">
+
+      <div class="section">
+
+        {% for product in products %}
+
+        <div class="cardProduct">
+
+          <div id="card_product">
+
+            <div class="titleProduct"><small>Nom : </small>
+              <h3><a id='name-{{product.id}}'>{{ product.name }} </a></h3>
+            </div>
+
+            <p> Référence : {{ product.id }} </p>
+            <p> Description : {{ product.description }} </p>
+            <p>Prix : <a id='price-{{product.id}}'> {{ product.price }} </a>€</p>
+            <p> Type de produit : {{ product.type }} </p>
+            <p> Stock : {{ product.stock }} </p>
+            <img class="pet-img" src="{{ product.urlImg }}" alt="Image Pet">
+
+            <br>
+            Quantitée : <a name="btn_adopt">
+              <input type="number" id='qtt-{{product.id}}'>
+              <button id='btn-{{product.id}}'>Ajouter au Panier !</button>
+            </a>
+          </div>
+
+        </div>
+
+        {% endfor %}
+      </div>
+    </div>
+
 </div>
-<hr>
-{% endfor %}
-</div>
-<div id="cart">
-<h3> Votre Panier :</h3>
-</div>
-
-
-<button id='buy' >Paiement !</button>
-
-<div id="paie">
-<h3> Total Paiement :</h3>
+</main>
 </div>
 
 {% block javascripts %}
 
 <script>
+  var buttons = document.querySelectorAll("#panier button");
+  var priceArray = new Array();
 
-var buttons = document.querySelectorAll("#panier button");
-var priceArray = new Array();
+  buttons.forEach((button, i) => {
+    i++;
+    button.addEventListener('click', () => {
+      var nom = document.querySelector("#name-" + i).innerHTML;
+      var qtt = document.getElementById("qtt-" + i).value;
+      var prix = document.querySelector("#price-" + i).innerHTML;
+      var cart = document.getElementById("cart");
 
-buttons.forEach((button,i) => {
-  i++;
-  button.addEventListener('click', () => {
-    var nom = document.querySelector("#name-"+ i).innerHTML;
-    var qtt = document.getElementById("qtt-"+ i).value;
-    var prix = document.querySelector("#price-"+ i).innerHTML;
-    var cart = document.getElementById("cart");
+      const para = document.createElement("p");
+      para.setAttribute('id', 'p' + i);
+      const node = document.createTextNode("Produit : " + nom + " Quantité : " + qtt + " Prix : " + prix);
 
-    const para = document.createElement("p");
-    para.setAttribute('id','p'+ i);
-    const node = document.createTextNode("Product :" + nom + " Quantité :" + qtt +" Prix :" + prix );
+      priceArray.push(qtt * prix)
 
-    priceArray.push(qtt*prix)
-
-    if(document.getElementById("qtt-"+ i).value){
+      if (document.getElementById("qtt-" + i).value) {
         para.appendChild(node);
         cart.appendChild(para);
-        document.getElementById("qtt-"+ i).value = ''
-    }
-
-   
-
+        document.getElementById("qtt-" + i).value = ''
+      }
+    });
   });
-});
 
 
-var paiement = document.getElementById("buy");
-var paie = document.getElementById("paie");
+  var paiement = document.getElementById("buy");
+  var paie = document.getElementById("paie");
 
-paiement.addEventListener('click' , () => {
+  paiement.addEventListener('click', () => {
     var total = 0;
 
-    const para = document.createElement("p");  
-    para.setAttribute('id','total');
+    const para = document.createElement("p");
+    para.setAttribute('id', 'total');
 
-    for (var i = 0; i < priceArray.length ; i++) {
-         total += priceArray[i];
-         console.log(total);
+    for (var i = 0; i < priceArray.length; i++) {
+      total += priceArray[i];
+      console.log(total);
     }
-    
+
     const node = document.createTextNode("Prix total : " + total + "€");
     console.log(total);
 
     para.appendChild(node);
     paie.appendChild(para);
-    
-})
 
-
-
+  })
 </script>
+
 {% endblock %}
 
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+  }
+
+  .container {
+    background: #f1f1f1;
+    min-height: 100vh;
+    padding: 50px;
+  }
+
+  .container .add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    margin: auto;
+    padding: 15px 80px;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #723647;
+    transition: border-color .4s, transform .4s, box-shadow .4s, -webkit-transform .4s;
+  }
+
+  .container .add:hover {
+    box-shadow: 0 6px 12px -2px #723647;
+    -webkit-transform: translate(0, -3px);
+    -ms-transform: translate(0, -3px);
+    transform: translate(0, -3px);
+  }
+
+  main {
+    margin: auto;
+    width: 70%;
+  }
+
+  main h2 {
+    text-align: center;
+    font-size: 40px;
+    color: #303030;
+    margin-bottom: 50px
+  }
+
+  .cardProduct {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 500px !important;
+    max-height: 700px;
+    margin-top: 30px;
+    padding: 30px;
+    border-radius: 4px;
+    border: 2px solid #303030;
+    background: #fff;
+  }
+
+  .cardProduct .titleProduct {
+    display: flex;
+    margin-bottom: 20px;
+  }
+
+  .cardProduct small {
+    margin-top: 5px;
+    margin-right: 5px;
+    font-size: 18px;
+    color: grey;
+  }
+
+  .cardProduct h3 {
+    font-size: 25px;
+    color: #303030;
+  }
+
+
+  .cardProduct p {
+    font-size: 18px;
+    color: #303030;
+    margin-bottom: 10px;
+  }
+
+  .cardProduct img {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 4px;
+    border: 2px solid #723647;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .panier {
+    position: absolute;
+    right: 180px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    width: 300px !important;
+    max-height: 700px;
+    margin-top: 30px;
+    padding: 30px;
+    border-radius: 4px;
+    border: 2px solid #303030;
+    background: #fff;
+  }
+</style>
 
 {% endblock %}

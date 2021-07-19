@@ -5,12 +5,83 @@
 {% block body %}
 
 
-<h1> Nom : {{ pet.name}} </h1>
+<div class="container">
+    <main>
+
+        <h2>Bien joué Adoptoutou 🐶</h2>
+
+        <div class="cardPet">
+
+            <h3> Nom : {{ pet.name}} </h3>
+
+            <p> Adopté par : {{ user_mail}}</p>
+
+            <img class="pet-img" src="{{ pet.urlImg }}" alt="Image Pet">
+
+    </div>
+
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Rubik', sans-serif;
+    }
+
+    .container {
+        background: #f1f1f1;
+        min-height: 100vh;
+        padding: 50px;
+    }
+
+    main {
+        margin: auto;
+        width: 70%;
+    }
+
+    main h2 {
+        text-align: center;
+        font-size: 40px;
+        color: #303030;
+        margin-bottom: 50px
+    }
+
+        .cardPet {
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 500px !important;
+        max-height: 800px;
+        margin-top: 30px;
+        padding: 30px;
+        border-radius: 4px;
+        border: 2px solid #303030;
+        background: #fff;
+    }
+
+    .cardPet h3 {
+        font-size: 25px;
+        color: #303030;
+    }
 
 
-<h3> Adopté par : {{ user_mail}}</h3>
+    .cardPet p {
+        font-size: 18px;
+        color: #303030;
+        margin-bottom: 10px;
+    }
 
-<p><img class="pet-img" src="{{ pet.urlImg }}" alt="Image Pet" style="width:250px ; height:150px;"></p>
+    .cardPet img {
+        width: 100%;
+        border-radius: 4px;
+        border: 2px solid #723647;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    </style>
 
 
 {% endblock %}

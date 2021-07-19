@@ -4,35 +4,139 @@
 
 {% block body %}
 
-<h1>Création d'un animal</h1>
+<div class="container">
+    <main>
 
-<form action="" method="post">
-    <label>Nom</label>
-    <input type="text" name="name" placeholder="nom de l'animal">
-    <br>
-    <label>Type</label> 
-    <input type="text" name="type" placeholder="Type d'animal"> 
-    <br>
-    <label>Race</label> 
-    <input type="text" name="race" placeholder="Race de l'animal">
-    <br>
-    <label>Age</label> 
-    <input type="number" name="age" placeholder="Age de l'animal">
-    <br>
-    <label>Poids</label> 
-    <input type="number" name="weight" placeholder="Poids de l'animal">
-    <br>
-    <label>Couleur</label> 
-    <input type="text" name="color" placeholder="Couleur de l'animal">
-    <br>
-    <label>Adopté</label> 
-    <input type="text" name="state" placeholder="Animal adpoté ?">
-    <br>
-    <label>Lien img</label> 
-    <input type="text" name="img" placeholder="Image de l'animal">
-    <br>
-    <br>  <br>
-    <input type="submit" value="Enregistrer"> 
-</form>
+        <h2>Ajouter un animal sur Adoptoutou 🐶</h2>
+
+        <form action="" method="post">
+            <label>Nom</label>
+            <input class="text" type="text" name="name" placeholder="Nom de l'animal">
+            <br>
+            <label>Type</label>
+            <input class="text" type="text" name="type" placeholder="Type d'animal">
+            <br>
+            <label>Race</label>
+            <input class="text" type="text" name="race" placeholder="Race de l'animal">
+            <br>
+            <label>Age</label>
+            <input class="text" type="number" name="age" placeholder="Age de l'animal">
+            <br>
+            <label>Poids</label>
+            <input class="text" type="number" name="weight" placeholder="Poids de l'animal">
+            <br>
+            <label>Couleur</label>
+            <input class="text" type="text" name="color" placeholder="Couleur de l'animal">
+            <br>
+            <label>Adopté</label>
+            <input class="text" type="text" name="state" placeholder="0=Non ; 1=Oui">
+            <br>
+            <label>Lien img</label>
+            <input class="text" type="text" name="img" placeholder="Photo de l'animal">
+            <input class="save" type="submit" value="AJOUTER L'ANIMAL">
+        </form>
+
+    </main>
+</div>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Rubik', sans-serif;
+    }
+
+    .container {
+        background: #f1f1f1;
+        min-height: 100vh;
+        padding: 50px;
+    }
+
+    .container a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+        margin: auto;
+        padding: 15px 80px;
+        font-size: 15px;
+        text-align: center;
+        border-radius: 4px;
+        text-decoration: none;
+        color: #fff;
+        background-color: #723647;
+        transition: border-color .4s, transform .4s, box-shadow .4s, -webkit-transform .4s;
+    }
+
+    .container a:hover {
+        box-shadow: 0 6px 12px -2px #723647;
+        -webkit-transform: translate(0, -3px);
+        -ms-transform: translate(0, -3px);
+        transform: translate(0, -3px);
+    }
+
+    main {
+        margin: auto;
+        width: 70%;
+    }
+
+    main h2 {
+        text-align: center;
+        font-size: 40px;
+        color: #303030;
+        margin-bottom: 50px
+    }
+    
+    form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+form label {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #303030;
+}
+
+form input.text{
+    height: 40px;
+    width: 30%;
+    outline: none;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid lightgrey;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+form input.save {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border: none;
+    width: 30%;
+    margin: auto;
+    padding: 15px 80px;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #723647;
+    transition: border-color .4s,transform .4s,box-shadow .4s,-webkit-transform .4s;
+}  
+
+input.save:hover {
+    box-shadow: 0 6px 12px -2px #723647;
+    -webkit-transform: translate(0,-3px);
+    -ms-transform: translate(0,-3px);
+    transform: translate(0,-3px);
+}
+</style>
 
 {% endblock %}

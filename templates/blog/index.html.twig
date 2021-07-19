@@ -4,146 +4,144 @@
 
 {% block body %}
 <div class="container">
-<main>
+    <main>
 
-<h2>Blog Adoptoutou 🐶</h2>
+        <h2>Blog Adoptoutou 🐶</h2>
 
-{% if is_granted('ROLE_ADMIN') %}
+        {% if is_granted('ROLE_ADMIN') %}
 
-<a href="{{ path('blog_create')}}">REDIGER UN NOUVEAU POST</a>
+        <a href="{{ path('blog_create')}}">REDIGER UN NOUVEAU POST</a>
 
-{% endif %}
+        {% endif %}
 
-{% for post in posts %}
+        {% for post in posts %}
 
-<div class="postCard">
+        <div class="postCard">
 
-<div class="topPost">
+            <div class="topPost">
 
-<h5> {{ post.title }} </h5>
+                <h5> {{ post.title }} </h5>
 
+            </div>
+
+            <div class="midPost">
+
+                <p> {{ post.description }} </p>
+
+            </div>
+
+            <div class="bottomPost">
+
+                <p> Rédigé par {{ post.user }} </p>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+        <img src="../../img/pattes.png">
+
+    </main>
 </div>
 
-<div class="midPost">
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Rubik', sans-serif;
+    }
 
-<p> {{ post.description }} </p>
+    .container {
+        background: #f1f1f1;
+        min-height: 100vh;
+        padding: 50px;
+    }
 
-</div>
+    .container a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+        margin: auto;
+        padding: 15px 80px;
+        font-size: 15px;
+        text-align: center;
+        border-radius: 4px;
+        text-decoration: none;
+        color: #fff;
+        background-color: #723647;
+        transition: border-color .4s, transform .4s, box-shadow .4s, -webkit-transform .4s;
+    }
 
-<div class="bottomPost">
+    .container a:hover {
+        box-shadow: 0 6px 12px -2px #723647;
+        -webkit-transform: translate(0, -3px);
+        -ms-transform: translate(0, -3px);
+        transform: translate(0, -3px);
+    }
 
-<p> Rédigé par {{ post.user }} </p>
+    main {
+        margin: auto;
+        width: 70%;
+    }
 
-</div>
+    main h2 {
+        text-align: center;
+        font-size: 40px;
+        color: #303030;
+        margin-bottom: 50px
+    }
 
-</div>
+    .postCard {
+        margin: auto;
+        width: 70%;
+        height: auto;
+        padding: 30px;
+        border-bottom: 2px solid #723647;
+        margin-bottom: 20px;
+    }
 
-{% endfor %}
+    .topPost {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-<img src="../../img/pattes.png">
+    .topPost h5 {
+        margin-bottom: 30px;
+        font-size: 20px;
+        color: #303030;
+    }
 
-</main>
-</div>
+    .midPost {
+        display: flex;
+        align-items: center;
+    }
 
-<style> 
+    .midPost p {
+        margin-bottom: 20px;
+        font-size: 15px;
+        color: #303030;
+    }
 
-body{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Rubik', sans-serif;
-}
+    .bottomPost {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
 
-.container {
-    background: #f1f1f1;
-    min-height: 100vh;
-    padding: 50px;
-}
+    .bottomPost p {
+        font-size: 13px;
+        color: #000;
+        font-weight: bold;
+    }
 
-.container a{ 
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-    width: 30%;
-    margin: auto;
-    padding: 15px 80px;
-    font-size: 15px;
-    text-align: center;
-    border-radius: 4px;
-    text-decoration: none;
-    color: #fff;
-    background-color: #723647;
-    transition: border-color .4s,transform .4s,box-shadow .4s,-webkit-transform .4s;
-}
-
-.container a:hover {
-    box-shadow: 0 6px 12px -2px #723647;
-    -webkit-transform: translate(0,-3px);
-    -ms-transform: translate(0,-3px);
-    transform: translate(0,-3px);
-}
-
-main {
-    margin: auto;
-    width: 70%;
-}
-
-main h2 {
-    text-align: center;
-    font-size: 40px;
-    color: #303030;
-    margin-bottom: 50px
-}
-
-.postCard {
-    margin: auto;
-    width: 70%;
-    height: auto;
-    padding: 30px;
-    border-bottom: 2px solid #723647;
-    margin-bottom: 20px;
-}
-
-.topPost {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.topPost h5 {
-    margin-bottom: 30px;
-    font-size: 20px;
-    color: #303030;
-}
-
-.midPost {
-    display: flex;
-    align-items: center;
-}
-
-.midPost p {
-    margin-bottom: 20px;
-    font-size: 15px;
-    color: #303030;
-}
-
-.bottomPost {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.bottomPost p {
-    font-size: 13px;
-    color: #000;
-    font-weight: bold;
-}
-
-main img {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-}
-
+    main img {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
 </style>
 {% endblock %}
