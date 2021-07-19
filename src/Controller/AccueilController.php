@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Pets;
+use App\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,9 +18,19 @@ class AccueilController extends AbstractController
     {
         $lastUsername = $authenticationUtils->getLastUsername();
 
+        $repoPets = $this->getDoctrine()->getRepository(Pets::class);
+
+        $pets = $repoPets->findLastPets();
+
+        $repoProduct = $this->getDoctrine()->getRepository(Product::class);
+
+        $product = $repoProduct->findLastProducts();
+
         return $this->render('accueil/index.html.twig', [
             'controller_name' => 'AccueilController',
-            'last_username' => $lastUsername
+            'last_username' => $lastUsername,
+            'pets' => $pets,
+            'products' => $product
         ]);
     }
 }

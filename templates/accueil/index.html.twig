@@ -9,6 +9,47 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ last_username }}! ✅</h1>
+    <h1>Bienvenue {{ last_username }}! ✅</h1>
+</div>
+
+<div id="container">
+
+<div id="column-left">
+{% for pet in pets %}
+
+<h2> Nom :<a id='name-{{ pet.name }}'>{{ pet.name }} </a></h2>
+
+<!--<p> Id : {{ pet.id }} </p>-->
+<p> Type : {{ pet.type }} </p>
+<p> Race : {{ pet.race }} </p>
+<p> Adopté :
+{% if (pet.state == 1) %}
+    Oui
+{% else %}  
+    Non
+{% endif %} 
+</p>
+<p><img class="pet-img" src="{{ pet.urlImg }}" alt="Image Pet" style="width:200px ; height:150px;"></p>
+
+<hr>
+{% endfor %}
+</div>
+
+<div class="column-right">
+{% for product in products %}
+
+<h2> Nom :<a id='name-{{product.id}}'>{{ product.name }} </a></h2>
+
+<!--<p> Id : {{ product.id }} </p>-->
+<p> Description : {{ product.description }} </p>
+<p>Prix :<a id='price-{{product.id}}'>{{ product.price }} </a>€</p>
+<p> Type de produit : {{ product.type }} </p>
+<p> Stock : {{ product.stock }} </p>
+<p><img class="pet-img" src="{{ product.urlImg }}" alt="Image Pet" style="width:250px ; height:150px;"></p>
+
+<hr>
+{% endfor %}
+</div>
+
 </div>
 {% endblock %}

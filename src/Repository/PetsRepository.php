@@ -23,6 +23,16 @@ class PetsRepository extends ServiceEntityRepository
     //  * @return Pets[] Returns an array of Pets objects
     //  */
     
+    public function findLastPets() {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.id', 'DESC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /*
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('p')
@@ -34,7 +44,7 @@ class PetsRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    
+    */
 
     /*
     public function findOneBySomeField($value): ?Pets
